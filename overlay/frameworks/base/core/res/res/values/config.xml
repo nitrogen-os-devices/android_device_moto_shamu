@@ -117,7 +117,7 @@
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
     <bool name="config_multiColorBatteryLed">true</bool>
 
-    <bool name="config_multiColorNotificationLed">true</bool>
+    <add-resource type="bool" name="config_multiColorNotificationLed">true</add-resource>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
@@ -291,6 +291,12 @@
 
     <!-- Flag specifying whether VoLTE is availasble on device -->
     <bool name="config_device_volte_available">true</bool>
+
+    <!-- Whether the always on display mode is available. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
 
     <!-- Flag specifying whether VoLTE is availasble on device -->
     <bool name="config_device_vt_available">false</bool>

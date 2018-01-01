@@ -200,4 +200,5 @@
 /sys/devices/fd900000.qcom,mdss_mdp/caps            u:object_r:sysfs_hal_gralloc:s0
 
 # Sysfs for vibrator
+/sys/devices/virtual/timed_output/vibrator/enable                        u:object_r:sysfs_vibrator:s0
 /sys/devices/virtual/timed_output/vibrator/vtg_level                     u:object_r:sysfs_vibrator:s0

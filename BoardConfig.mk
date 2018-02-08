@@ -129,20 +129,15 @@ USE_CLANG_PLATFORM_BUILD := true
 
 TARGET_FS_CONFIG_GEN += device/moto/shamu/config.fs
 
-# Disable dex-preopt of prebuilts to save space.
-DONT_DEXPREOPT_PREBUILTS := true
-
 # Render
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
-# CMHW
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := \
-    hardware/cyanogen/cmhw
-
 # Recovery
 LZMA_RAMDISK_TARGETS := recovery
+
+# Device manifest
+DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 
 -include vendor/motorola/shamu/BoardConfigVendor.mk

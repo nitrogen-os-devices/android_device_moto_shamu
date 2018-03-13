@@ -2,7 +2,7 @@
 
 			L I B R M N E T C T L _ H N D L. H
 
-Copyright (c) 2013, The Linux Foundation. All rights reserved.
+Copyright (c) 2013, 2015 The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -57,7 +57,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 struct rmnetctl_hndl_s {
 	 uint32_t pid;
 	 uint32_t transaction_id;
-	 uint32_t netlink_fd;
+	 int netlink_fd;
 	 struct sockaddr_nl src_addr, dest_addr;
 };
 

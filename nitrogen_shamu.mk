@@ -1,5 +1,5 @@
 #
-# Copyright 2014 The Android Open-Source Project
+# Copyright 2013-2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,21 +17,28 @@
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2560
+TARGET_SCREEN_WIDTH := 1440
+
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-
-PRODUCT_NAME := aosp_shamu
-PRODUCT_DEVICE := shamu
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on Shamu
-PRODUCT_MANUFACTURER := motorola
-#PRODUCT_RESTRICT_VENDOR_FILES := true
-
 $(call inherit-product, device/moto/shamu/device.mk)
 $(call inherit-product-if-exists, vendor/moto/shamu/device-vendor.mk)
 
-PRODUCT_NAME := aosp_shamu
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/nitrogen/products/common.mk)
 
-PRODUCT_PACKAGES += \
-    Launcher3
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := shamu
+PRODUCT_NAME := nitrogen_shamu
+PRODUCT_BRAND := google
+PRODUCT_MODEL := Nexus 6
+PRODUCT_MANUFACTURER := motorola
+PRODUCT_RESTRICT_VENDOR_FILES := false
 
+# Device Fingerprint
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=shamu \
+    BUILD_FINGERPRINT=google/shamu/shamu:7.1.1/N6F27M/4299435:user/release-keys \
+    PRIVATE_BUILD_DESC="shamu-user 7.1.1 N6F27M 4299435 release-keys"

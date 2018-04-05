@@ -1,5 +1,6 @@
 #
 # Copyright 2014 The Android Open Source Project
+# Copyright 2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -33,7 +34,7 @@ on init
     symlink /sdcard /storage/sdcard0
 
 on fs
-    mount_all fstab.shamu
+    mount_all fstab.shamu --early
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -59,7 +60,19 @@ on fs
     setprop persist.data.df.agg.dl_pkt 10
     setprop persist.data.df.agg.dl_size 4096
 
-on post-fs-data
+    # Start HW service manager early
+    start hwservicemanager
+
+on late-fs
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start configstore-hal-1-0
+    start gralloc-2-0
+
+    # Mount RW partitions which need run fsck
+    mount_all /fstab.shamu --late
+
     # boot time fs tune
     write /sys/block/mmcblk0/queue/iostats 0
     write /sys/block/mmcblk0/queue/scheduler cfq
@@ -67,6 +80,7 @@ on post-fs-data
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
     write /sys/block/dm-0/queue/read_ahead_kb 2048
 
+on post-fs-data
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system

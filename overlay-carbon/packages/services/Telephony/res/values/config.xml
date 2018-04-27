@@ -17,6 +17,9 @@
 <!-- Phone app resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
-    <!-- Show APN Settings for some CDMA carriers -->
-    <bool name="config_show_apn_setting_cdma">true</bool>
+    <string-array name="enabled_networks_values" translatable="false">
+        <item>"10"</item>
+        <item>"0"</item>
+        <item>"1"</item>
+    </string-array>
 </resources>

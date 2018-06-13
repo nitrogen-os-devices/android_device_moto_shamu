@@ -141,3 +141,6 @@ DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
 
 -include vendor/moto/shamu/BoardConfigVendor.mk
+
+# Recovery
+LZMA_RAMDISK_TARGETS := recovery

@@ -13,6 +13,9 @@ persist.audio.fluence.voicerec=false
 ro.config.vc_call_vol_steps=6
 ro.qc.sdk.audio.fluencetype=fluence
 
+# Bluetooth
+bluetooth.enable_timeout_ms=12000
+
 # Camera
 persist.camera.hal.debug.mask=7
 persist.camera.ISP.debug.mask=0
@@ -73,6 +76,9 @@ telephony.lteOnCdmaDevice=1
 
 # Tethering
 net.tethering.noprovisioning=true
+
+# Vendor security patch level
+ro.lineage.build.vendor_security_patch=2017-10-01
 
 # WiFi calling
 persist.data.iwlan.enable=true

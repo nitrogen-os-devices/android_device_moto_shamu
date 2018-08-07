@@ -197,10 +197,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
-# Thermal
-PRODUCT_PACKAGES += \
-    thermal.shamu
-
 # Thermal config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-shamu.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-shamu.conf
@@ -282,7 +278,3 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera.disable_zsl_mode=0 \
     persist.camera.HAL3.enabled=1 \
     persist.camera.ois.disable=0
-
-# Perf
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-   ro.qualcomm.perf.cores_online=2

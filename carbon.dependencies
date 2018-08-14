@@ -1,6 +1,6 @@
 [
   {
-    "repository": "CarbonROM/android_kernel_moto_msm",
+    "repository": "CarbonBeta/android_kernel_moto_msm",
     "target_path": "kernel/moto/shamu"
   }
 ]

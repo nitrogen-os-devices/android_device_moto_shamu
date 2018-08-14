@@ -125,8 +125,6 @@ BOARD_HAS_AUDIO_DSP := true
 
 USE_DEVICE_SPECIFIC_CAMERA:= true
 
-USE_CLANG_PLATFORM_BUILD := true
-
 TARGET_FS_CONFIG_GEN += device/moto/shamu/config.fs
 
 # Render

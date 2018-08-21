@@ -53,37 +53,39 @@ static int first_display_off_hint;
 
 static int current_power_profile = PROFILE_BALANCED;
 
-static int profile_high_performance[] = {
-    CPUS_ONLINE_MIN_4,
-    0x0901,
-    CPU0_MIN_FREQ_TURBO_MAX,
-    CPU1_MIN_FREQ_TURBO_MAX,
-    CPU2_MIN_FREQ_TURBO_MAX,
-    CPU3_MIN_FREQ_TURBO_MAX
-};
-
 static int profile_power_save[] = {
     0x0A03,
     CPUS_ONLINE_MAX_LIMIT_2,
-    CPU0_MAX_FREQ_NONTURBO_MAX,
-    CPU1_MAX_FREQ_NONTURBO_MAX,
-    CPU2_MAX_FREQ_NONTURBO_MAX,
-    CPU3_MAX_FREQ_NONTURBO_MAX
+    CPU0_MAX_FREQ_NONTURBO_MAX + 1,
+    CPU1_MAX_FREQ_NONTURBO_MAX + 1,
+    CPU2_MAX_FREQ_NONTURBO_MAX + 1,
+    CPU3_MAX_FREQ_NONTURBO_MAX + 1
 };
 
 static int profile_bias_power[] = {
     0x0A03,
-    CPU0_MAX_FREQ_NONTURBO_MAX,
-    CPU1_MAX_FREQ_NONTURBO_MAX,
-    CPU1_MAX_FREQ_NONTURBO_MAX,
-    CPU2_MAX_FREQ_NONTURBO_MAX
+    CPUS_ONLINE_MAX_LIMIT_2,
+    CPU0_MAX_FREQ_NONTURBO_MAX + 14,
+    CPU1_MAX_FREQ_NONTURBO_MAX + 14,
+    CPU2_MAX_FREQ_NONTURBO_MAX + 14,
+    CPU3_MAX_FREQ_NONTURBO_MAX + 14,
 };
 
 static int profile_bias_performance[] = {
+    CPUS_ONLINE_MIN_2,
     CPU0_MIN_FREQ_NONTURBO_MAX + 1,
     CPU1_MIN_FREQ_NONTURBO_MAX + 1,
     CPU2_MIN_FREQ_NONTURBO_MAX + 1,
-    CPU2_MIN_FREQ_NONTURBO_MAX + 1
+    CPU3_MIN_FREQ_NONTURBO_MAX + 1
+};
+
+static int profile_high_performance[] = {
+    0x0901,
+    CPUS_ONLINE_MIN_4,
+    CPU0_MIN_FREQ_NONTURBO_MAX + 5,
+    CPU1_MIN_FREQ_NONTURBO_MAX + 5,
+    CPU2_MIN_FREQ_NONTURBO_MAX + 5,
+    CPU3_MIN_FREQ_NONTURBO_MAX + 5
 };
 
 #ifdef INTERACTION_BOOST
@@ -131,27 +133,32 @@ static void set_power_profile(int profile)
 
 static int resources_interaction_fling_boost[] = {
     CPUS_ONLINE_MIN_3,
-    0x20F,
-    0x30F,
-    0x40F,
-    0x50F
+    CPU0_MIN_FREQ_NONTURBO_MAX + 1,
+    CPU1_MIN_FREQ_NONTURBO_MAX + 1,
+    CPU2_MIN_FREQ_NONTURBO_MAX + 1,
+    CPU3_MIN_FREQ_NONTURBO_MAX + 1
 };
 
 static int resources_interaction_boost[] = {
     CPUS_ONLINE_MIN_2,
-    0x20F,
-    0x30F,
-    0x40F,
-    0x50F
+    CPU0_MIN_FREQ_NONTURBO_MAX + 1,
+    CPU1_MIN_FREQ_NONTURBO_MAX + 1,
+    CPU2_MIN_FREQ_NONTURBO_MAX + 1,
+    CPU3_MIN_FREQ_NONTURBO_MAX + 1
 };
 
 static int resources_launch[] = {
-    CPUS_ONLINE_MIN_3,
-    CPU0_MIN_FREQ_TURBO_MAX,
-    CPU1_MIN_FREQ_TURBO_MAX,
-    CPU2_MIN_FREQ_TURBO_MAX,
-    CPU3_MIN_FREQ_TURBO_MAX
+    CPUS_ONLINE_MIN_2,
+    CPU0_MIN_FREQ_NONTURBO_MAX + 5,
+    CPU1_MIN_FREQ_NONTURBO_MAX + 5,
+    CPU2_MIN_FREQ_NONTURBO_MAX + 5,
+    CPU3_MIN_FREQ_NONTURBO_MAX + 5
 };
+
+const int DEFAULT_INTERACTIVE_DURATION   =  200; /* ms */
+const int MIN_FLING_DURATION             = 1500; /* ms */
+const int MAX_INTERACTIVE_DURATION       = 5000; /* ms */
+const int LAUNCH_DURATION                = 1000; /* ms */
 
 int power_hint_override(power_hint_t hint, void *data)
 {
@@ -174,11 +181,12 @@ int power_hint_override(power_hint_t hint, void *data)
 
     switch (hint) {
         case POWER_HINT_INTERACTION:
-            duration = 500; // 500ms by default
+            duration = DEFAULT_INTERACTIVE_DURATION;
             if (data) {
                 int input_duration = *((int*)data);
                 if (input_duration > duration) {
-                    duration = (input_duration > 5000) ? 5000 : input_duration;
+                    duration = (input_duration > MAX_INTERACTIVE_DURATION) ?
+                            MAX_INTERACTIVE_DURATION : input_duration;
                 }
             }
 
@@ -192,7 +200,7 @@ int power_hint_override(power_hint_t hint, void *data)
             s_previous_boost_timespec = cur_boost_timespec;
             s_previous_duration = duration;
 
-            if (duration >= 1500) {
+            if (duration >= MIN_FLING_DURATION) {
                 interaction(duration, ARRAY_SIZE(resources_interaction_fling_boost),
                         resources_interaction_fling_boost);
             } else {
@@ -201,7 +209,7 @@ int power_hint_override(power_hint_t hint, void *data)
             }
             return HINT_HANDLED;
         case POWER_HINT_LAUNCH:
-            duration = 2000;
+            duration = LAUNCH_DURATION;
             interaction(duration, ARRAY_SIZE(resources_launch),
                     resources_launch);
             return HINT_HANDLED;

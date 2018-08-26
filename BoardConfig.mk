@@ -139,4 +139,7 @@ LZMA_RAMDISK_TARGETS := recovery
 DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
 
+# gralloc1 bits
+TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk

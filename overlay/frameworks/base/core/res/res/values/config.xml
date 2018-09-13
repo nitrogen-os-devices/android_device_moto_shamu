@@ -85,10 +85,10 @@
     </integer-array>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">17</integer>
+    <integer name="config_screenBrightnessDim">1</integer>
 
     <!-- Screen brightness when dozing. -->
-    <integer name="config_screenBrightnessDoze">17</integer>
+    <integer name="config_screenBrightnessDoze">34</integer>
 
     <!-- Default screen brightness setting.
          Must be in the range specified by minimum and maximum. -->

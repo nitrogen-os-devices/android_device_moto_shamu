@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/carbon_shamu.mk
+    $(LOCAL_DIR)/nitrogen_shamu.mk

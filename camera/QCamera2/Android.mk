@@ -58,7 +58,7 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/stack/common \
         frameworks/native/include/media/hardware \
         frameworks/native/include/media/openmax \
-        $(call project-path-for,qcom-media)/libstagefrighthw \
+        hardware/qcom/media/msm8974/libstagefrighthw \
         system/media/camera/include \
         $(LOCAL_PATH)/../mm-image-codec/qexif \
         $(LOCAL_PATH)/../mm-image-codec/qomx_core \
@@ -74,13 +74,13 @@ LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 #LOCAL_STATIC_LIBRARIES := libqcamera2_util
 LOCAL_C_INCLUDES += \
-        $(call project-path-for,qcom-display)/libgralloc
+        hardware/qcom/display/$(TARGET_BOARD_PLATFORM)/libgralloc
 LOCAL_C_INCLUDES += \
-        $(call project-path-for,qcom-display)/libqdutils
+        hardware/qcom/display/$(TARGET_BOARD_PLATFORM)/libqdutils
 
 LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl libsync
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
-LOCAL_SHARED_LIBRARIES += libqdMetaData
+LOCAL_SHARED_LIBRARIES += libqdMetaData libstagefrighthw
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)

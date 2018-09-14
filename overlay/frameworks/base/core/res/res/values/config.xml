@@ -269,6 +269,11 @@
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
+    <!-- Whether the always on display mode is available. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+     <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+
     <!-- Flag specifying whether VoLTE is availasble on device -->
     <bool name="config_device_volte_available">true</bool>
 

@@ -26,7 +26,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/moto/shamu/device.mk)
-$(call inherit-product-if-exists, vendor/moto/shamu/shamu-vendor-blobs.mk)
+$(call inherit-product, vendor/motorola/shamu/shamu-vendor.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := nitrogen_shamu

@@ -32,7 +32,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/audio_policy_volumes_drc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_drc.xml \
     $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/audio/motvr_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/motvr_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
@@ -136,6 +135,9 @@ PRODUCT_PACKAGES += \
     mm-jpeg-interface-test \
     mm-qcamera-app
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8084
@@ -165,8 +167,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:system/etc/permissions/android.hardware.nfc.hcef.xml \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/vendor/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/configs/libnfc-brcm-20795a10.conf:system/vendor/etc/libnfc-brcm-20795a10.conf
+    $(LOCAL_PATH)/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/configs/libnfc-nci-20795a10.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci-20795a10.conf
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -195,7 +197,7 @@ PRODUCT_COPY_FILES += \
 
 # Sec config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+    $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 # Thermal config
 PRODUCT_COPY_FILES += \
@@ -216,6 +218,10 @@ PRODUCT_PACKAGES += \
     wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# WiFi Config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
 
 # WiFi Firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4356/device-bcm.mk)

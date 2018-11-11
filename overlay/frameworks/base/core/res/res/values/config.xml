@@ -321,9 +321,9 @@
     <string-array translatable="false" name="config_gpsParameters">
         <item>SUPL_HOST=supl.google.com</item>
         <item>SUPL_PORT=7275</item>
-        <item>XTRA_SERVER_1=http://xtrapath1.izatcloud.net/xtra2.bin</item>
-        <item>XTRA_SERVER_2=http://xtrapath2.izatcloud.net/xtra2.bin</item>
-        <item>XTRA_SERVER_3=http://xtrapath3.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_1=https://xtrapath1.izatcloud.net/xtra3grc.bin</item>
+        <item>XTRA_SERVER_2=https://xtrapath2.izatcloud.net/xtra3grc.bin</item>
+        <item>XTRA_SERVER_3=https://xtrapath3.izatcloud.net/xtra3grc.bin</item>
         <item>NTP_SERVER=north-america.pool.ntp.org</item>
         <item>SUPL_MODE=1</item>
         <item>SUPL_VER=0x20000</item>
@@ -351,13 +351,13 @@
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/arm/boot-framework.oat"</item>
-        <item>"/system/framework/arm/boot-framework.vdex"</item>
+        <item>"/system/framework/boot-framework.vdex"</item>
         <item>"/system/framework/oat/arm/services.odex"</item>
         <item>"/system/framework/oat/arm/services.vdex"</item>
         <item>"/system/framework/arm/boot.oat"</item>
-        <item>"/system/framework/arm/boot.vdex"</item>
+        <item>"/system/framework/boot.vdex"</item>
         <item>"/system/framework/arm/boot-core-libart.oat"</item>
-        <item>"/system/framework/arm/boot-core-libart.vdex"</item>
+        <item>"/system/framework/boot-core-libart.vdex"</item>
     </string-array>
 
     <!-- Flag indicating which package name can access the persistent data partition -->
@@ -365,8 +365,4 @@
 
     <!-- If true, the display will be shifted around in ambient mode. -->
     <bool name="config_enableBurnInProtection">true</bool>
-
-    <!-- Operating volatage for bluetooth controller. 0 by default -->
-    <integer translatable="false" name="config_bluetooth_operating_voltage_mv">3300</integer>
-
 </resources>

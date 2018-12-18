@@ -55,6 +55,9 @@ BOARD_CUSTOM_BT_CONFIG := device/moto/shamu/bluetooth/vnd_shamu.txt
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA:= true
 
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/bin/mm-qcamera-daemon=26
+
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.shamu
@@ -63,6 +66,9 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 # Device manifest
 DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
+
+EXCLUDE_SERIF_FONTS := true
+
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -76,7 +82,6 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_FS_CONFIG_GEN += device/moto/shamu/config.fs
-TARGET_HW_DISK_ENCRYPTION := false
 TARGET_USES_MKE2FS := true
 
 # GPS
@@ -89,7 +94,7 @@ TARGET_USES_ION := true
 
 # Power
 TARGET_HAS_LEGACY_POWER_STATS := true
-TARGET_HAS_NO_WIFI_STATS := true
+TARGET_HAS_NO_WLAN_STATS := true
 TARGET_USES_INTERACTION_BOOST := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/bus/i2c/devices/1-004a/tsp"
 

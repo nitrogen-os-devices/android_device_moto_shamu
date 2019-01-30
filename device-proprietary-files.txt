@@ -197,7 +197,6 @@ etc/firmware/cpp_firmware_v1_8_0.fw
 vendor/firmware/cy8c20247_24lkxi.hex
 
 # Carrier Services
--priv-app/CarrierServices/CarrierServices.apk;PRESIGNED
 
 # CNE
 bin/cnd
@@ -228,10 +227,7 @@ lib/libdmjavaplugin.so
 -priv-app/ConnMO/ConnMO.apk
 -priv-app/DCMO/DCMO.apk
 -priv-app/DMService/DMService.apk
-lib/libdmengine.so:priv-app/DMService/lib/arm/libdmengine.so
-lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
 -priv-app/DiagMon/DiagMon.apk
--priv-app/GCS/GCS.apk;PRESIGNED
 -priv-app/LifetimeData/LifetimeData.apk
 -priv-app/SprintDM/SprintDM.apk
 
@@ -257,9 +253,6 @@ vendor/firmware/widevine.b01
 vendor/firmware/widevine.b02
 vendor/firmware/widevine.b03
 vendor/firmware/widevine.mdt
-
-# Project Fi
--app/Tycho/Tycho.apk;PRESIGNED
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
@@ -300,8 +293,6 @@ vendor/lib/libloc_ds_api.so
 # IMS/HD Voice
 -app/atfwd/atfwd.apk
 -app/ims/ims.apk
-lib/libimscamera_jni.so:app/ims/lib/arm/libimscamera_jni.so
-lib/libimsmedia_jni.so:app/ims/lib/arm/libimsmedia_jni.so
 bin/ATFWD-daemon
 bin/imsdatadaemon
 bin/imsqmidaemon
@@ -341,7 +332,7 @@ vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.mdt
 
 # Perf
-bin/mpdecision|98d60fa1a358c2222a9b775c603c789ace08a763
+bin/mpdecision:vendor/bin/mpdecision|98d60fa1a358c2222a9b775c603c789ace08a763
 vendor/lib/libqc-opt.so|4ad4c9bfd1b7e10d863726213c80c4162aee19d4
 
 # Qualcomm framework
@@ -367,7 +358,7 @@ bin/bridgemgrd
 bin/ks
 bin/mdm_helper
 bin/mdm_helper_proxy
-bin/netmgrd
+bin/netmgrd:vendor/bin/netmgrd
 bin/qmi_motext_hook
 bin/qmuxd
 bin/radish

@@ -48,7 +48,6 @@ USE_DEVICE_SPECIFIC_CAMERA:= true
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.shamu
 
 # EGL
 # Maximum GLES shader cache size for each app to store the compiled shader
@@ -59,6 +58,9 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # Maximum size of the  GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
+
+# Encryption
+TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -106,6 +108,7 @@ TARGET_KERNEL_CONFIG := shamu_defconfig
 TARGET_KERNEL_SOURCE := kernel/moto/shamu
 
 # Manifests
+DEVICE_FRAMEWORK_MANIFEST_FILE += system/libhidl/vintfdata/manifest_healthd_exclude.xml
 DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
 DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
 

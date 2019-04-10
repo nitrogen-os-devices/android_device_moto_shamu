@@ -39,6 +39,9 @@ git cherry-pick https://github.com/nitins-pie/hardware_qcom_audio/commit/8144c2e
 cd hardware/qcom/gps
 git pull https://github.com/nitins-pie/android_hardware_qcom_gps -b p 
 
+# For NFC to work
+git clone https://github.com/camcory/platform_hardware_custom_interfaces -b p hardware/custom/interfaces
+
 # Fix some build errors
 git fetch https://github.com/LineageOS/android_bionic refs/changes/67/223067/7 && git cherry-pick FETCH_HEAD
 git fetch https://github.com/LineageOS/android_external_perfetto refs/changes/13/223413/1 && git cherry-pick FETCH_HEAD

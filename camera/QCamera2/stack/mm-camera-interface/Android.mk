@@ -39,7 +39,7 @@ LOCAL_C_INCLUDES := \
 LOCAL_C_INCLUDES += $(kernel_includes)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
-LOCAL_C_INCLUDES += $(call project-path-for,qcom-media)/mm-core/inc
+LOCAL_C_INCLUDES += hardware/qcom/media/msm8974/mm-core/inc
 
 LOCAL_SRC_FILES := $(MM_CAM_FILES)
 

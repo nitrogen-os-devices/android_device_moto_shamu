@@ -6,10 +6,18 @@ git clone https://github.com/nitrogen-os-devices/android_device_moto_shamu -b p 
 git clone https://github.com/nitrogen-os-devices/android_vendor_motorola -b p vendor/motorola
 
 # Changes for RIL to work
-git pull https://github.com/camcory/platform_hardware_ril -b p hardware/ril;
+cd ~/nitrogen/hardware/ril
+
+git remote rm nitin
+
+git remote add nitin  https://github.com/camcory/platform_hardware_ril
+
+git pull nitin p
 
 # Vendor
 cd ~/nitrogen/vendor/nitrogen
+
+git remote rm nitin
 
 git remote add nitin https://github.com/nitins-pie/android_vendor_nitrogen
 
@@ -18,17 +26,23 @@ git pull nitin p
 # Changes for media
 cd ~/nitrogen/build/make/
 
+git remote rm nitin
+
 git remote add nitin https://github.com/nitins-pie/android_build_make
 
 git pull nitin p
 
 cd ~/nitrogen/build/soong/
 
+git remote rm nitin
+
 git remote add nitin https://github.com/nitins-pie/android_build_soong
 
 git pull nitin p
 
 cd ~/nitrogen/frameworks/native/
+
+git remote rm nitin
 
 git remote add nitin https://github.com/nitins-pie/android_frameworks_native
 
@@ -49,6 +63,8 @@ git cherry-pick https://github.com/nitins-pie/hardware_qcom_audio/commit/8144c2e
 
 # Probable fix for alleged soft reboots
 cd ~/nitrogen/hardware/qcom/gps
+
+git remote rm nitin
 
 git remote add nitin https://github.com/nitins-pie/android_hardware_qcom_gps
 
